@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 1123251
+    url: jdbc:mysql://localhost:3306/ziroom?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    type: com.alibaba.druid.pool.DruidDataSource
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+mybatis:
+  mapper-locations: classpath=com/yt/ziroom/mapper/*Mapper.xml
+  type-aliases-package: com.yt.ziroom.domain
+
+logging:
+  level:
+    com:
+      yt:
+        ziroom:
+          mapper: debug
+server:
+  port: 80
+
+springfox:
+  documentation:
+    swagger-ui:
+      base-url: doc

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yt.ziroom.mapper.TenantMapper">
+
+    <insert id="register" parameterType="Tenant">
+        insert into tenant (tNickname,tPhone,tPassword) values
+        (#{tNickname},#{tPhone},#{tPassword})
+    </insert>
+
+    <select id="queryPhone" parameterType="String" resultType="String">
+        select tPhone from tenant where tPhone =#{tPhone}
+    </select>
+
+
+
+    <update id="changeTenant" parameterType="Tenant">
+        update tenant
+            <set>
+                <if test="tNickname != null and tNickname != ''">
+                    tNickname = #{tNickname},
+                </if>
+                <if test="tPhone != null and tPhone != ''">
+                     tPhone = #{tPhone},
+                </if>
+                <if test="tEmail != null and tEmail != ''" >
+                     tEmail = #{tEmail},
+                </if>
+                <if test="tPassword != null and tPassword">
+                     tPassword = #{tPassword}
+                </if>
+             </set>
+            where tId = #{tId}
+    </update>
+</mapper>
